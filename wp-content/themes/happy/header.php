@@ -36,6 +36,19 @@
 		</div>
 
 		<ul class="navbar__right animate__delay">
+			<?php 
+			$current_category = get_category( get_query_var( 'cat' ) );
+			$parent_category = get_category( $current_category->parent );
+			if ( $parent_category != NULL ) {
+				?>
+
+				<li class="nav__link nav__link--uppercase nav__link--underline animate animate__fade--left">
+					<a href="<?php echo get_category_link( $parent_category ) ?>">Back to <?php echo $parent_category->name; ?></a>
+				</li>
+
+				<?php
+			}
+			?>
 			<li class="button button--navbar button--primary animate animate__fade--left">
 				<a href="<?php echo get_permalink( 31 ); ?>">Suggest a location</a>
 			</li>

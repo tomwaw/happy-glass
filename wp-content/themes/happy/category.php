@@ -5,7 +5,7 @@ get_header(); ?>
         <div class="image--background image--grayscale image--overlay" style="background-image: url('http://pre09.deviantart.net/ec0c/th/pre/i/2012/015/9/4/ruby_red_hdr_by_isik5-d4mh0ty.jpg')"></div>
 
         <?php 
-            $currentCategory = get_category(get_query_var('cat'));
+            $current_category = get_category(get_query_var('cat'));
         ?>
         
         <div class="flex__content">
@@ -13,8 +13,8 @@ get_header(); ?>
 
                 <div class="row rhythm flex__items--xs-middle">
                     <div class="col-lg-6">
-                        <h1 class="h1--700 animate animate__fade--left"><?php echo $currentCategory->name ?></h1>
-                        <?php if ($currentCategory->parent == 0): ?>
+                        <h1 class="h1--700 animate animate__fade--left"><?php echo $current_category->name ?></h1>
+                        <?php if ($current_category->parent == 0): ?>
                             <h2 class="h3 rhythm animate animate__fade--left">Choose a district to fine-tune your search.</h2>
                         <?php endif; ?>
                     </div>
@@ -94,18 +94,34 @@ get_header(); ?>
                 </div>
 
                 <?php
-                    $post_args = array(
+                    function happy_today_where($where) {
+                        $where = str_replace("meta_key = 'happy_hours_%", "meta_key LIKE 'happy_hours_%", $where);
+                        return $where;
+                    }
+
+                    add_filter('posts_where', 'happy_today_where');
+
+                    $today = strtolower(date('l'));
+
+                    $happy_today_args = array(
                         'post_type' => 'post',
                         'posts_per_page' => -1,
-                        'category_name' => $currentCategory->slug
+                        'category_name' => $current_category->slug,
+                        'meta_query' => array(
+                            array(
+                                'key' => 'happy_hours_%_day',
+                                'compare' => '==',
+                                'value' => $today
+                            )
+                        )
                     );
 
-                    $posts = new WP_Query( $post_args );
+                    $happy_today = new WP_Query( $happy_today_args );
                 ?>
 
-                <?php if ( $posts->have_posts() ) : ?>
+                <?php if ( $happy_today->have_posts() ) : ?>
                     <div class="row row__xs--centered">
-                        <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+                        <?php while ( $happy_today->have_posts() ) : $happy_today->the_post(); ?>
                             <div class="col-md-6 col-lg-3">
                                 <div class="card rhythm">
                                     <div class="card__header">
@@ -113,8 +129,8 @@ get_header(); ?>
                                     </div>
                                     <div class="card__content card--padded animate__delay">
                                         <a class="link h5 h5--700 animate animate__fade--up"><?php the_title() ?></a>
-                                        <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                        <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
+                                        <h4 class="h6 rhythm animate animate__fade--up"><?php the_field('address') ?></h4>
+                                        <h5 class="h6 h6--700 animate animate__fade--up">Today 17:00 – 18:00</h5>
                                         <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
                                         <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
                                         <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
@@ -124,7 +140,67 @@ get_header(); ?>
                         <?php endwhile; ?>
                     </div>
                 <?php else: ?>
-                    No happy hours
+                    No happy hours today
+                <?php endif; ?>
+
+
+
+                <?php
+                    function happy_not_today_where($where) {
+                        $where = str_replace("meta_key = 'happy_hours_%", "meta_key LIKE 'happy_hours_%", $where);
+                        return $where;
+                    }
+
+                    add_filter('posts_where', 'happy_not_today_where');
+
+                    $today = strtolower(date('l'));
+
+                    $happy_not_today_args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => -1,
+                        'category_name' => $current_category->slug,
+                        'meta_query' => array(
+                            array(
+                                'key' => 'happy_hours_%_day',
+                                'compare' => '!=',
+                                'value' => $today
+                            )
+                        )
+                    );
+
+                    $happy_not_today = new WP_Query( $happy_not_today_args );
+                ?>
+
+                <?php if ( $happy_not_today->have_posts() ) : ?>
+                    <div class="row row__xs--centered">
+                        <?php while ( $happy_not_today->have_posts() ) : $happy_not_today->the_post(); ?>
+                            <?php if( have_rows('happy_hours') ): ?>
+
+                                <?php while ( have_rows('happy_hours') ) : the_row(); ?>
+
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card rhythm">
+                                            <div class="card__header">
+                                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
+                                            </div>
+                                            <div class="card__content card--padded animate__delay">
+                                                <a class="link h5 h5--700 animate animate__fade--up"><?php the_title() ?></a>
+                                                <h4 class="h6 rhythm animate animate__fade--up"><?php the_field('address') ?></h4>
+                                                <h5 class="h6 h6--700 animate animate__fade--up"><?php echo ucfirst(get_sub_field('day')) ?> <?php the_sub_field('from') ?> – <?php the_sub_field('to') ?></h5>
+                                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <?php endwhile; ?>
+
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else: ?>
+                    No happy hours ever
                 <?php endif; ?>
             </div>
         </div>

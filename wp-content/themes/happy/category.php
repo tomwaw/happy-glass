@@ -112,12 +112,12 @@ get_header(); ?>
                                         <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
                                     </div>
                                     <div class="card__content card--padded animate__delay">
-                                        <a href="<?php echo get_field( 'website' ); ?>" class="link h5 h5--700 animate animate__fade--up"><?php the_title() ?></a>
+                                        <a href="<?php echo get_field( 'website' ); ?>" class="link h5 h5--700 animate animate__fade--up"><?php the_title() ?></a><br>
                                         <a href="https://www.google.com/maps/place/<?php echo get_field( 'address' ); ?>" class="h6 rhythm animate animate__fade--up"><?php echo get_field( 'address' ); ?></a>
-                                        <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                        <p class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</p>
+                                        <p class="h6 animate animate__fade--up">Wieselburger €1.90</p>
+                                        <p class="h6 animate animate__fade--up">Wieselburger €1.90</p>
+                                        <p class="h6 animate animate__fade--up">Wieselburger €1.90</p>
                                     </div>
                                 </div>
                             </div>

@@ -13,7 +13,7 @@ get_header(); ?>
 
                 <div class="row rhythm flex__items--xs-middle">
                     <div class="col-lg-6">
-                        <h1 class="h1--boom h1--700 animate animate__fade--left"><?php echo $currentCategory->name ?></h1>
+                        <h1 class="h1--700 animate animate__fade--left"><?php echo $currentCategory->name ?></h1>
                         <?php if ($currentCategory->parent == 0): ?>
                             <h2 class="h3 rhythm animate animate__fade--left">Choose a district to fine-tune your search.</h2>
                         <?php endif; ?>

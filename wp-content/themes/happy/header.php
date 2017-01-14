@@ -20,20 +20,24 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'happy' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-			?>
-		</div><!-- .site-branding -->
-	</header><!-- #masthead -->
+<nav class="navbar navbar--light navbar--hiding navbar--fixed navbar--fixed-top is--revealed">
+	<div class="container">
+		<div class="navbar__left">
+			<a class="nav__link" href="/">
+				<img src="" width="25" alt="Bricks logo">
+			</a>
+		</div>
 
-	<div id="content" class="site-content">
+		<div class="burger navbar__toggle">
+			<input type="checkbox" checked>
+				<span></span>
+		</div>
+
+		<ul class="navbar__right animate__delay">
+			<li class="button button--navbar button--primary animate animate__fade--left">
+				<a href="<?php echo get_permalink( 31 ); ?>">Suggest a location</a>
+			</li>
+		</ul>
+	</div>
+</nav>

@@ -11,11 +11,11 @@
 
 ?>
 
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<footer class="footer">
+	<div class="container align__xs--center">
+		<p>Made with :beer: in Vienna</p>
+	</div>
+</footer>
 
 <?php wp_footer(); ?>
 

@@ -14,19 +14,18 @@ get_header();
 					<div class="form__field col-lg-4">
 						<label class="input__label">City</label>
 						<select class="input input__select">
-							<option disabled selected value hidden>Select your city...</option>
-							<option>First option</option>
-							<option>Second option</option>
-							<option>Third option</option>
+							<!--<option disabled selected value hidden>Select your city...</option>-->
+							<option>Vienna</option>
 						</select>
 					</div>
 					<div class="form__field col-lg-4">
 						<label class="input__label">District</label>
 						<select class="input input__select">
 							<option disabled selected value hidden>Select your district...</option>
-							<option>First option</option>
-							<option>Second option</option>
-							<option>Third option</option>
+							<?php $districts = get_categories(array('child_of' => 7));?>
+							<?php foreach ($districts as $d): ?>
+								<option value="<?php echo $d->term_id ?>"><?php echo $d->name ?></option>
+							<?php endforeach;?>
 						</select>
 					</div>
 					<div class="form__field col-lg-4">

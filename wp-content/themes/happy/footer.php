@@ -35,7 +35,7 @@
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
     }
     // Load scripts async
-    loadScript("/js/main.js");
+    loadScript("<?php echo get_bloginfo('template_directory') ?>/js/main.js");
 </script>
 <footer class="footer">
 	<div class="container align__xs--center">

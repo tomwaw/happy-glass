@@ -3,14 +3,20 @@ get_header(); ?>
 
 	<section class="hero flex fullscreen animate__delay is--revealed"><anchor name="home"></anchor>
         <div class="image--background image--grayscale image--overlay" style="background-image: url('http://pre09.deviantart.net/ec0c/th/pre/i/2012/015/9/4/ruby_red_hdr_by_isik5-d4mh0ty.jpg')"></div>
+
+        <?php 
+            $currentCategory = get_category(get_query_var('cat'));
+        ?>
         
         <div class="flex__content">
             <div class="container">
 
                 <div class="row rhythm flex__items--xs-middle">
                     <div class="col-lg-6">
-                        <h1 class="h1--boom h1--700 animate animate__fade--left">Vienna</h1>
-                        <h2 class="h3 rhythm animate animate__fade--left">Choose a district to fine-tune your search.</h2>
+                        <h1 class="h1--boom h1--700 animate animate__fade--left"><?php echo $currentCategory->name ?></h1>
+                        <?php if ($currentCategory->parent == 0): ?>
+                            <h2 class="h3 rhythm animate animate__fade--left">Choose a district to fine-tune your search.</h2>
+                        <?php endif; ?>
                     </div>
                     <div class="col-lg-6">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1669 1312" style="width:100%" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450 366">
@@ -87,118 +93,42 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <div class="row row__xs--centered">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <a href="" class="link h5 h5--700 animate animate__fade--up">Pub name</a>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card rhythm is--disabled">
-                            <div class="card__header">
-                                <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
-                            </div>
-                            <div class="card__content card--padded animate__delay">
-                                <h3 class="h5 h5--700 animate animate__fade--up">Pub name</h3>
-                                <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
-                                <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                                <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
-                            </div>
-                        </div>
-                    </div>
+                <?php
+                    $post_args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => -1,
+                        'category_name' => $currentCategory->slug
+                    );
 
-                </div>
+                    $posts = new WP_Query( $post_args );
+                ?>
+
+                <?php if ( $posts->have_posts() ) : ?>
+                    <div class="row row__xs--centered">
+                        <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card rhythm">
+                                    <div class="card__header">
+                                        <div class="image ratio__xs--1to2 ratio__md--1to1"></div>
+                                    </div>
+                                    <div class="card__content card--padded animate__delay">
+                                        <a class="link h5 h5--700 animate animate__fade--up"><?php the_title() ?></a>
+                                        <h4 class="h6 rhythm animate animate__fade--up">Gumpendorferstrasse 32/15</h4>
+                                        <h5 class="h6 h6--700 animate animate__fade--up">Happy hour 17:00 – 18:00</h5>
+                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                        <h5 class="h6 animate animate__fade--up">Wieselburger €1.90</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else: ?>
+                    No happy hours
+                <?php endif; ?>
             </div>
         </div>
     </section>
 
 <?php
-
 get_footer();

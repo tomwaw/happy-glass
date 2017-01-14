@@ -22,7 +22,7 @@ get_header();
 						<label class="input__label">District</label>
 						<select class="input input__select">
 							<option disabled selected value hidden>Select your district...</option>
-							<?php $districts = get_categories(array('child_of' => 7));?>
+							<?php $districts = get_categories(array('child_of' => 7, 'hide_empty' => false, 'orderby' => 'meta_value_num', 'meta_key' => 'order'));?>
 							<?php foreach ($districts as $d): ?>
 								<option value="<?php echo $d->term_id ?>"><?php echo $d->name ?></option>
 							<?php endforeach;?>

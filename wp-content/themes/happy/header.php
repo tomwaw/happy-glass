@@ -39,7 +39,7 @@
 			<?php 
 			$current_category = get_category( get_query_var( 'cat' ) );
 			$parent_category = get_category( $current_category->parent );
-			if ( $parent_category != NULL ) {
+			if ( $parent_category->cat_ID != 0 ) {
 				?>
 
 				<li class="nav__link nav__link--uppercase nav__link--underline animate animate__fade--left">
